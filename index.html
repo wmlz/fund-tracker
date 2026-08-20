@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LOF/ETF 实时溢价监控</title>
+<link rel="stylesheet" href="style.css">
+<script src="funds.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
+</head>
+<body>
+<header>
+  <div class="brand">
+    <h1>实时溢价监控</h1>
+    <span class="subtitle">场内价 ÷ 实时估算净值 − 1</span>
+  </div>
+  <select id="fundSelect" aria-label="选择基金"></select>
+</header>
+
+<main>
+  <section class="cards">
+    <div class="card premium-card" id="premium-card">
+      <div class="label">实时溢价率</div>
+      <div class="value big" id="premium">--</div>
+      <div class="sub" id="premiumSub">等待数据...</div>
+    </div>
+    <div class="card">
+      <div class="label">场内价格</div>
+      <div class="value" id="intradayPrice">--</div>
+      <div class="sub" id="intradaySub">--</div>
+    </div>
+    <div class="card">
+      <div class="label">估算实时净值</div>
+      <div class="value" id="estNav">--</div>
+      <div class="sub" id="navSub">--</div>
+    </div>
+    <div class="card">
+      <div class="label">跟踪标的</div>
+      <div class="value" id="trackerPrice">--</div>
+      <div class="sub" id="trackerSub">--</div>
+    </div>
+  </section>
+
+  <section class="alert-bar">
+    <div class="alert-title">溢价预警</div>
+    <div class="alert-inputs">
+      <label>高于 <input id="alertUp" type="number" step="0.1" placeholder="如 3"> %</label>
+      <label>低于 <input id="alertDown" type="number" step="0.1" placeholder="如 -3"> %</label>
+      <button id="saveAlert" type="button">保存</button>
+      <button id="notifyBtn" type="button">开启浏览器通知</button>
+    </div>
+    <div class="alert-status" id="alertStatus"></div>
+  </section>
+
+  <section class="charts">
+    <div class="chart-box">
+      <h2>盘中走势 <small>场内价 / 估算净值</small></h2>
+      <div id="minuteChart" class="chart"></div>
+    </div>
+    <div class="chart-box">
+      <h2>历史溢价率 <small>收盘价 ÷ 当日净值 − 1</small></h2>
+      <div id="historyChart" class="chart"></div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="status" id="status">加载中...</div>
+    <div class="disclaimer">数据来源：腾讯行情 / 天天基金 / 上海期货交易所（经代理）。仅供研究参考，不构成投资建议。</div>
+  </footer>
+</main>
+
+<script src="datasource.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

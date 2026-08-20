@@ -1,0 +1,10 @@
+{
+  "name": "premium-monitor",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "LOF/ETF 实时溢价率监控（抹除基金净值更新延迟）",
+  "scripts": {
+    "dev": "npx serve ."
+  }
+}
