@@ -243,6 +243,32 @@ footer .status { color: var(--text); margin-bottom: 4px; }
 .div-card .foot b { color: var(--text); }
 .div-card-err { margin-top: 16px; color: var(--text-dim); font-size: 13px; }
 
+/* 卡片可点击展开历史走势 */
+.div-card { cursor: pointer; }
+.hist-toggle {
+  margin-top: 12px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  color: var(--accent);
+}
+.hist-toggle .caret { display: inline-block; transition: transform 0.2s; }
+.div-card.open .hist-toggle { color: var(--text-dim); }
+.div-card.open .hist-toggle .caret { transform: rotate(180deg); }
+
+.hist-wrap { margin-top: 10px; padding-top: 12px; border-top: 1px solid var(--line); }
+.hist-chart { width: 100%; height: 220px; }
+.hist-loading {
+  height: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-dim);
+  font-size: 13px;
+}
+.hist-note { font-size: 11px; color: var(--text-dim); margin-top: 6px; line-height: 1.5; }
+
 @media (min-width: 720px) {
   .div-grid { grid-template-columns: repeat(2, 1fr); }
 }

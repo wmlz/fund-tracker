@@ -139,6 +139,15 @@ window.DS = (() => {
     return json;
   }
 
+  // 指数 PE 历史（用于反推股息率走势）
+  async function getIndexValuationHistory(code) {
+    const resp = await fetch(API_ROOT + '/api/dividend?code=' + encodeURIComponent(code) + '&history=1');
+    if (!resp.ok) throw new Error('dividend history HTTP ' + resp.status);
+    const json = await resp.json();
+    if (!json.ok) throw new Error(json.error || 'dividend history error');
+    return json;
+  }
+
   // ---- 跟踪标的报价 ----
   async function getTrackerQuote(fund, anchorDate) {
     const t = fund.tracker;
@@ -258,6 +267,7 @@ window.DS = (() => {
     getNavHistory,
     getLatestNav,
     getIndexValuation,
+    getIndexValuationHistory,
     getTrackerQuote,
     todayStr
   };
