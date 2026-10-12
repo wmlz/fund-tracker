@@ -486,4 +486,16 @@
   initMinuteFromTencent();
   refreshQuote();
   scheduleRefresh();
+
+  // 供「红利股息率」tab 切换协调：切换时暂停/恢复轮询、重绘图表
+  window.__premiumControl = {
+    pause() { if (timer) { clearInterval(timer); timer = null; } },
+    resume() { scheduleRefresh(); },
+    resize() {
+      requestAnimationFrame(() => {
+        minuteChart && minuteChart.resize();
+        historyChart && historyChart.resize();
+      });
+    }
+  };
 })();

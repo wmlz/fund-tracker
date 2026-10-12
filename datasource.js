@@ -130,6 +130,15 @@ window.DS = (() => {
     return { date: last.date, nav: last.nav, purchase: last.purchase };
   }
 
+  // ---- 指数估值（红利股息率，经 Vercel /api/dividend 代理蛋卷） ----
+  async function getIndexValuation(code) {
+    const resp = await fetch(API_ROOT + '/api/dividend?code=' + encodeURIComponent(code));
+    if (!resp.ok) throw new Error('dividend HTTP ' + resp.status);
+    const json = await resp.json();
+    if (!json.ok) throw new Error(json.error || 'dividend error');
+    return json;
+  }
+
   // ---- 跟踪标的报价 ----
   async function getTrackerQuote(fund, anchorDate) {
     const t = fund.tracker;
@@ -248,6 +257,7 @@ window.DS = (() => {
     getMinuteData,
     getNavHistory,
     getLatestNav,
+    getIndexValuation,
     getTrackerQuote,
     todayStr
   };

@@ -150,3 +150,99 @@ footer .status { color: var(--text); margin-bottom: 4px; }
   .charts { grid-template-columns: 1fr 1fr; }
   .chart { height: 360px; }
 }
+
+/* ---------- tab 切换 ---------- */
+.tabs {
+  display: flex;
+  gap: 4px;
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 16px;
+  border-bottom: 1px solid var(--line);
+}
+.tab {
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: var(--text-dim);
+  font-family: inherit;
+  font-size: 14px;
+  padding: 10px 12px;
+  margin-bottom: -1px;
+  cursor: pointer;
+}
+.tab:hover { color: var(--text); }
+.tab.active { color: var(--text); border-bottom-color: var(--accent); }
+
+/* ---------- 红利股息率视图 ---------- */
+.div-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 16px 0 12px;
+}
+.div-title { font-size: 15px; font-weight: 600; }
+.div-title small { color: var(--text-dim); font-weight: 400; margin-left: 6px; }
+#divRefresh {
+  background: var(--bg-elev);
+  color: var(--text);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 7px 14px;
+  font-size: 13px;
+  cursor: pointer;
+}
+#divRefresh:hover { border-color: var(--accent); }
+
+.div-grid { display: grid; grid-template-columns: 1fr; gap: 12px; }
+
+.div-card {
+  background: var(--bg-card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 18px;
+}
+.div-card-head { display: flex; align-items: center; gap: 8px; }
+.div-card-head .name { font-size: 15px; font-weight: 600; }
+.div-card-head .code { font-size: 12px; color: var(--text-dim); }
+.div-badge {
+  margin-left: auto;
+  font-size: 11px;
+  padding: 2px 8px;
+  border: 1px solid;
+  border-radius: 10px;
+  white-space: nowrap;
+}
+.div-card .yeild {
+  font-size: 38px;
+  font-weight: 700;
+  margin: 10px 0 2px;
+  color: var(--text);
+  font-variant-numeric: tabular-nums;
+}
+.div-card .yeild-label { font-size: 12px; color: var(--text-dim); }
+.div-card .metrics {
+  display: flex;
+  gap: 18px;
+  margin: 14px 0 4px;
+  font-size: 13px;
+  color: var(--text-dim);
+}
+.div-card .metrics b { color: var(--text); font-variant-numeric: tabular-nums; }
+.bar-wrap { margin-top: 12px; }
+.bar-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: var(--text-dim);
+  margin-bottom: 5px;
+}
+.bar { height: 6px; background: var(--bg-elev); border-radius: 3px; overflow: hidden; }
+.bar > i { display: block; height: 100%; border-radius: 3px; }
+.div-card .foot { margin-top: 12px; font-size: 12px; color: var(--text-dim); }
+.div-card .foot b { color: var(--text); }
+.div-card-err { margin-top: 16px; color: var(--text-dim); font-size: 13px; }
+
+@media (min-width: 720px) {
+  .div-grid { grid-template-columns: repeat(2, 1fr); }
+}
