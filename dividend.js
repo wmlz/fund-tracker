@@ -95,7 +95,13 @@
       animation: false,
       tooltip: {
         trigger: 'axis',
-        formatter: (p) => p[0].axisValue + '<br/>股息率 ' + (+p[0].data[1]).toFixed(2) + '%'
+        formatter: (p) => {
+          const d = new Date(p[0].axisValue);
+          const ds = d.getUTCFullYear() + '-' +
+            String(d.getUTCMonth() + 1).padStart(2, '0') + '-' +
+            String(d.getUTCDate()).padStart(2, '0');
+          return ds + '<br/>股息率 ' + (+p[0].data[1]).toFixed(2) + '%';
+        }
       },
       grid: { left: 46, right: 14, top: 18, bottom: 26 },
       xAxis: {
